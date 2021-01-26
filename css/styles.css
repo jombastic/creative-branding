@@ -47,15 +47,13 @@ p {
 	margin: 0 0 10px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-}
-
 h1,
 h2 {
 	color: #000000;
 	font-size: 24px;
 	text-transform: uppercase;
 	letter-spacing: 5px;
+	text-align: center;
 	margin: 80px 0 30px 0;
 }
 
@@ -130,6 +128,19 @@ html[xmlns] .clearfix {
 	max-width: 750px;
 }
 
+.overlay {
+	position: fixed; /* Sit on top of the page content */
+	width: 100%; /* Full width (cover the whole page) */
+	height: 100%; /* Full height (cover the whole page) */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+	cursor: pointer; /* Add a pointer on hover */
+	background: rgba(0,0,0,0.5) url('../img/loader.gif') center center no-repeat;
+}
+
 .centerFlex,
 .title {
 	display: flex;
@@ -175,7 +186,7 @@ a#read_more {
 
 header {
 	padding: 135px 0 95px 0;
-	background: #797979 url('img/woman.jpg') center/cover no-repeat;
+	background: #797979 url('../img/woman.jpg') center/cover no-repeat;
 	color: #d6d6d6;
 }
 
@@ -196,12 +207,69 @@ header .title h1 {
 header #down {
 	margin-top: 45px;
 	font-size: 24px;
+	cursor: pointer;
 }
 
-nav {
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+.navbar {
 	position: sticky;
 	top: 0;
-	padding: 10px 0;
+	padding-top: 10px;
+	padding-bottom: : 10px;
 	border-bottom: 2px solid #f7f7f7;
 	background: #fff;
 }
@@ -215,13 +283,11 @@ nav #onepage {
 
 nav .topnav {
 	overflow: hidden;
-	float: right;
 }
 
 nav .topnav a {
 	color: #797979;
 	text-align: center;
-	padding: 0 10px;
 	text-transform: uppercase;
 	font-size: 11px;
 	position: relative;
@@ -244,7 +310,7 @@ nav .topnav a:active:before {
 	animation:in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
 }
 
-nav .topnav a.active {
+.navbar-light .navbar-nav .nav-link.active {
 	color: #a69a6a;
 }
 
@@ -361,7 +427,7 @@ section#portfolio .column img {
 
 section#beach {
 	height: 245px;
-	background: #464646 url('img/beach.jpg') center/cover no-repeat;
+	background: #464646 url('../img/beach.jpg') center/cover no-repeat;
 }
 
 section#beach {
@@ -392,6 +458,7 @@ section#beach .column {
 
 section#contact {
 	padding: 115px 0 65px 0;
+	overflow: hidden;
 }
 
 section#contact .contentAiner {
@@ -407,9 +474,7 @@ section#contact label {
 	color: #2e2e2e;
 }
 
-section#contact input,
-section#contact select,
-section#contact textarea {
+.input {
 	border: none;
 	border-top: 2px solid #2e2e2e;
 	width: 100%;
@@ -454,6 +519,10 @@ section#contact address a {
 	color: #2e2e2e;
 }
 
+.invalid {
+	background: #ff4f4f66;
+}
+
 footer {
 	flex-shrink: 0;
 	background: #3c3c3c;
@@ -474,6 +543,20 @@ footer #bottom_nav a {
 
 summary {
 	color: #595959;
+}
+
+@media (min-width: 576px) {
+	[class*="navbar-expand"] .navbar-nav .nav-link {
+		padding-right: 10px;
+		padding-left: 10px;
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+
+	nav .topnav a {
+		 padding: 0 10px; 
+		 text-align: center;
+	}
 }
 
 @media (min-width: 620px) {
